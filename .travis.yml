@@ -9,10 +9,10 @@ script:
     - docker run -e CI=true piotrek/docker-multi npm test
 
 after_success:
-    - docker build -t piotrek/client -f ./client
-    - docker build -t piotrek/worker -f ./worker
-    - docker build -t piotrek/nginx -f ./nginx
-    - docker build -t piotrek/server -f./server
+    - docker build -t piotrek/client ./client
+    - docker build -t piotrek/worker ./worker
+    - docker build -t piotrek/nginx  ./nginx
+    - docker build -t piotrek/server ./server
     # Log into docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # Push to dockerhub
