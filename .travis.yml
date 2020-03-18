@@ -9,14 +9,14 @@ script:
     - docker run -e CI=true piotrek/docker-multi npm test
 
 after_success:
-    - docker build -t piotrek/client ./client
-    - docker build -t piotrek/worker ./worker
-    - docker build -t piotrek/nginx  ./nginx
-    - docker build -t piotrek/server ./server
+    - docker build -t piotrekjanus/client ./client
+    - docker build -t piotrekjanus/worker ./worker
+    - docker build -t piotrekjanus/nginx  ./nginx
+    - docker build -t piotrekjanus/server ./server
     # Log into docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # Push to dockerhub
-    - docker push piotrek/client
-    - docker push piotrek/server
-    - docker push piotrek/nginx
-    - docker push piotrek/worker
+    - docker push piotrekjanus/client
+    - docker push piotrekjanus/server
+    - docker push piotrekjanus/nginx
+    - docker push piotrekjanus/worker
